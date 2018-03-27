@@ -7,9 +7,13 @@ const response_formatter = async (ctx, next) => {
   if (ctx.body) {
     console.log(ctx.response)
     ctx.body = {
-      code: ctx.response.status,
-      message: 'success',
-      data: ctx.body
+      header: {
+        code: ctx.response.status,
+        message: 'success',
+      },
+      body: {
+        data: ctx.body
+      }
     }
   } else {
     ctx.body = {
@@ -29,8 +33,13 @@ const url_filter = function (pattern) {
       if (error instanceof ApiError && reg.test(ctx.originalUrl)) {
         ctx.status = 200;
         ctx.body = {
-          code: error.code,
-          message: error.message
+          header: {
+            code: error.code,
+            message: error.message
+          },
+          body: {
+            data: ctx.body
+          }
         }
       }
       // 继续抛，让外层中间件处理日志
