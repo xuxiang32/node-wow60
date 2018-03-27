@@ -8,17 +8,18 @@ const response_formatter = async (ctx, next) => {
     console.log(ctx.response)
     ctx.body = {
       header: {
-        code: ctx.response.status,
-        message: 'success',
+        code: 20000,
+        message: 'success'
       },
-      body: {
-        data: ctx.body
-      }
+      body: ctx.body
     }
   } else {
     ctx.body = {
-      code: ctx.response.status,
-      message: 'success'
+      header: {
+        code: 50000,
+        message: '内部接口错误'
+      },
+      body: null
     }
   }
 }
@@ -31,7 +32,7 @@ const url_filter = function (pattern) {
       await next()
     } catch (error) {
       if (error instanceof ApiError && reg.test(ctx.originalUrl)) {
-        ctx.status = 200;
+        ctx.status = 50000;
         ctx.body = {
           header: {
             code: error.code,
