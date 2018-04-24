@@ -1,15 +1,14 @@
 {
-  "extends": "standard",
   "parser": "babel-eslint",
   "rules": {
-    "no-new": 0, // 可以直接使用new关键字
-    "no-extra-boolean-cast": 0, // 可直接使用!!
-    "semi": 0, //关闭分号约束
+    "no-new": 0,
+    "no-extra-boolean-cast": 0,
+    "semi": 0, 
     "space-before-function-paren": [
       "error",
       {
         "anonymous": "always",
-        "named": "ignore", // 关闭命名函数名后空格
+        "named": "ignore",
         "asyncArrow": "always"
       }
     ],

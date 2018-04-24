@@ -12,5 +12,11 @@ router.get('/', function (ctx, next) {
 router.post('/account/getList', accountController.getAccountList)
 // 添加用户
 router.post('/account/addAccount', accountController.addAccount)
+// 删除账户
+router.post('/account/delAccount', accountController.delAccount)
+// 更改密码
+router.post('/account/changePassWord', accountController.changePassWord)
+// 根据id获取信息
+router.post('/account/getUsernameById', accountController.getUsernameById)
 
 module.exports = router
